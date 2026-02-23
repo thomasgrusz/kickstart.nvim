@@ -380,7 +380,6 @@ require('lazy').setup({
       vim.list_extend(ensure_installed, {
         'lua_ls', -- Lua Language server
         'stylua', -- Used to format Lua code
-        'pyright', -- Python LSP
         'ruff', -- Fast formatter + linter
         -- You can add other tools here that you want Mason to install
       })
