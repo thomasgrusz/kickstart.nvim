@@ -41,6 +41,7 @@ vim.o.list = true
 vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 vim.o.inccommand = 'split'
 vim.o.confirm = true
+vim.schedule(function() vim.o.clipboard = 'unnamedplus' end)
 
 -- Keymaps
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
@@ -53,9 +54,9 @@ vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper win
 -- vim.keymap.set("n", "<C-S-l>", "<C-w>L", { desc = "Move window to the right" })
 -- vim.keymap.set("n", "<C-S-j>", "<C-w>J", { desc = "Move window to the lower" })
 -- vim.keymap.set("n", "<C-S-k>", "<C-w>K", { desc = "Move window to the upper" })
+vim.keymap.set('n', '<leader>pr', function() vim.cmd '!python3 %' end, { desc = '[P]ython [R]un current file' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
-vim.schedule(function() vim.o.clipboard = 'unnamedplus' end)
 
 -- Diagnostic config
 vim.diagnostic.config {
@@ -638,6 +639,8 @@ require('lazy').setup({
       ---@diagnostic disable-next-line: duplicate-set-field
       statusline.section_location = function() return '%2l:%-2v' end
 
+      -- Move lines up and down with Alt+k/j
+      require('mini.move').setup()
       -- ... and there is more!
       --  Check out: https://github.com/nvim-mini/mini.nvim
     end,
