@@ -26,14 +26,20 @@ vim.o.inccommand = 'split'
 vim.o.confirm = true
 vim.schedule(function() vim.o.clipboard = 'unnamedplus' end)
 vim.o.modeline = false
+vim.o.winborder = 'rounded'
+vim.o.tabstop = 2
+vim.o.shiftwidth = 2
+vim.o.expandtab = true
 
 -- Keymaps
+vim.keymap.set('n', 'G', 'Gzz')
 vim.keymap.set('n', '<Esc>', '<cmd>nohlsearch<CR>')
 vim.keymap.set('n', '<C-h>', '<C-w><C-h>', { desc = 'Move focus to the left window' })
 vim.keymap.set('n', '<C-l>', '<C-w><C-l>', { desc = 'Move focus to the right window' })
 vim.keymap.set('n', '<C-j>', '<C-w><C-j>', { desc = 'Move focus to the lower window' })
 vim.keymap.set('n', '<C-k>', '<C-w><C-k>', { desc = 'Move focus to the upper window' })
 vim.keymap.set('n', '<leader>rp', function() vim.cmd '!python3 %' end, { desc = 'Run current [P]ython file' })
+vim.keymap.set('n', '<leader>rl', function() vim.cmd '!lua %' end, { desc = 'Run current [L]ua file' })
 vim.keymap.set('t', '<Esc><Esc>', '<C-\\><C-n>', { desc = 'Exit terminal mode' })
 vim.keymap.set('n', '<leader>q', vim.diagnostic.setloclist, { desc = 'Open diagnostic [Q]uickfix list' })
 
